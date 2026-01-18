@@ -106,8 +106,6 @@ local Response = net.request({
     body = MultipartData:tostring(),
 })
 
-print(string.len(process.env.ASSET_ID), "ASSET ID LENGTH")
-
 if (Response.statusCode ~= 200) then
     error(`Failed to upload model: {Response.statusCode} - {Response.body}`)
 end
