@@ -37,6 +37,10 @@ if (Result and DotEnv) then
     print("Loaded .env file.")
 end
 
+-- Check for required environment variables
+assert(process.env.API_KEY, "API_KEY environment variable is not set.")
+assert(process.env.ASSET_ID, "ASSET_ID environment variable is not set.")
+
 -- Root folder for the compiled guidebook
 print("Compiling guidebook...")
 
