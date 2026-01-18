@@ -4,10 +4,6 @@ on:
   push:
   workflow_dispatch:
 
-env:
-  API_KEY: ${{ secrets.API_KEY }}
-  ASSET_ID: ${{ secrets.ASSET_ID }}
-
 jobs:
   run-lune:
     runs-on: ubuntu-latest
@@ -30,4 +26,7 @@ jobs:
           sudo mv lune /usr/local/bin/
 
       - name: Run Luau Script
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          ASSET_ID: ${{ secrets.ASSET_ID }}
         run: lune run compile-guidebook/main.luau
