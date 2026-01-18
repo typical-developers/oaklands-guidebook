@@ -4,6 +4,10 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  API_KEY: ${{ secrets.API_KEY }}
+  ASSET_ID: ${{ secrets.ASSET_ID }}
+
 jobs:
   run-lune:
     runs-on: ubuntu-latest
