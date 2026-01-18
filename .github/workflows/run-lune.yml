@@ -1,0 +1,29 @@
+name: Run Lune Script
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  run-lune:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Lune
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Download the latest Linux release of Lune
+          gh release download --repo lune-org/lune --pattern "*linux-x86_64.zip" --output lune.zip
+          
+          # Unzip and make executable
+          unzip lune.zip
+          chmod +x lune
+          
+          # Move to a location in PATH (optional, or just call ./lune)
+          sudo mv lune /usr/local/bin/
+
+      - name: Run Luau Script
+        run: lune run compile-guidebook/main.luau
