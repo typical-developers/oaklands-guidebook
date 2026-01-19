@@ -15,6 +15,10 @@ return function()
             },
             {
                 Type = "RichText",
+                Text = "HELLOOOOOO! :) 🚀🚀🚀🚀🚀"
+            },
+            {
+                Type = "RichText",
                 Text = "Welcome to the <b>Oaklands Guidebook</b>! This guidebook provides detailed information about the various materials found in Oaklands, including their values and uses."
             },
             {
