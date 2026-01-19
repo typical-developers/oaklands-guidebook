@@ -16,16 +16,12 @@ export type RichText = {
     Style: TextStyle?
 }
 
-export type HorizontalAligner = {
-    Type: "Aligner",
-    Direction: "Left" | "Center" | "Right",
-    Padding: number
-}
-
-export type VerticalAligner = {
-    Type: "Aligner",
-    Direction: "Top" | "Middle" | "Bottom",
-    Padding: number
+export type ListLayout = {
+    Type: "ListLayout",
+    HorizontalAlignment: "Left" | "Center" | "Right",
+    VerticalAlignment: "Top" | "Middle" | "Bottom",
+    Wraps: boolean?,
+    Padding: number?
 }
 
 export type GridAligner = {
@@ -98,7 +94,7 @@ export type Frame = {
     Content: {GuidebookContent},
 }
 
-export type GuidebookContent = Header | RichText | HorizontalAligner | VerticalAligner | GridAligner | Table | Button | ImageButton | Image | Frame | FillFrame
+export type GuidebookContent = Header | RichText | ListLayout | GridAligner | Table | Button | ImageButton | Image | Frame | FillFrame
 
 export type GuidebookPage = {
     Title: string,
