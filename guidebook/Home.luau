@@ -19,6 +19,10 @@ return function()
             },
             {
                 Type = "RichText",
+                Text = "This guidebook is under active development. Stay tuned for more updates!"
+            },
+            {
+                Type = "RichText",
                 Text = "Welcome to the <b>Oaklands Guidebook</b>! This guidebook provides detailed information about the various materials found in Oaklands, including their values and uses."
             },
             {

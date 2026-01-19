@@ -15,6 +15,7 @@ local APIReference = {}
 APIReference.API = {
     MaterialValues = require("./api-reference/MaterialValues"),
     Translation = require("./api-reference/Translation"),
+    Util = require("./api-reference/Util"),
 }
 
 return APIReference
