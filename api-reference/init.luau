@@ -13,8 +13,8 @@
 local APIReference = {}
 
 APIReference.API = {
-    MaterialValues = require(script.MaterialValues),
-    Translation = require(script.Translation)
+    MaterialValues = require("./api-reference/MaterialValues"),
+    Translation = require("./api-reference/Translation"),
 }
 
 return APIReference
