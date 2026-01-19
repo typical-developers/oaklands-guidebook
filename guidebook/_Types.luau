@@ -1,19 +1,32 @@
 --!strict
 
-export type TextStyle = {} -- TODO
+export type Stroke = {
+    Color: Color3,
+    Thickness: number,
+    Transparency: number?,
+}
+
+export type TextStyle = {
+    FontSize: number?,
+    FontWeight: Enum.FontWeight?,
+    FontStroke: Stroke?,
+    
+    XAlignment: Enum.TextXAlignment?,
+    YAlignment: Enum.TextYAlignment?,
+} -- TODO
 
 export type ThemeColor = "Default" | "Blue" | "Red" | "Green" | "Yellow" | "Purple" | "Orange" | "Pink" | "Grey"
-
-export type Header = {
-    Type: "Header",
-    Text: string,
-    Style: TextStyle?
-}
 
 export type RichText = {
     Type: "RichText",
     Text: string,
-    Style: TextStyle?
+    Style: TextStyle?,
+
+    ZIndex: number?,
+
+    Size: UDim2?,
+    Position: UDim2?,
+    AnchorPoint: Vector2?,
 }
 
 export type ListLayout = {
@@ -24,13 +37,19 @@ export type ListLayout = {
     Padding: number?
 }
 
-export type GridAligner = {
-    Type: "Aligner",
-    Rows: number,
-    Columns: number,
+export type GridLayout = {
+    Type: "GridLayout",
+    
     Width: number,
     Height: number,
-    Padding: number
+
+    Padding: number?,
+
+    HorizontalAlignment: "Left" | "Center" | "Right",
+    VerticalAlignment: "Top" | "Middle" | "Bottom",
+
+    FillDirection: ("Horizontal" | "Vertical")?,
+    MaxCellsPerLine: number?,
 }
 
 export type Table = {
@@ -46,13 +65,34 @@ export type Button = {
 
     OnClick: () -> ()?,
     
-    Width: number?,
-    Height: number?,
+    Size: UDim2?,
+    Position: UDim2?,
     
     TextStyle: TextStyle?,
     Color: string,
 
     ButtonColor: ThemeColor?,
+
+    ZIndex: number?,
+}
+
+export type GenericButton = {
+    Type: "GenericButton",
+
+    Text: string,
+    TextStyle: TextStyle?,
+
+    OnClick: () -> ()?,
+    
+    Size: UDim2?,
+    Position: UDim2?,
+    AnchorPoint: Vector2?,
+    AutomaticSize: Enum.AutomaticSize?,
+    
+    BackgroundColor: ThemeColor?,
+    Transparency: number?,
+
+    ZIndex: number?,
 }
 
 export type ImageButton = {
@@ -60,41 +100,50 @@ export type ImageButton = {
     ImageAssetId: string,
     OnClick: () -> ()?,
     
-    Width: number?,
-    Height: number?,
+    Size: UDim2?,
+    Position: UDim2?,
 
     ButtonColor: ThemeColor?,
+
+    ZIndex: number?,
 }
 
 export type Image = {
     Type: "Image",
     ImageAssetId: string,
     
-    Width: number?,
-    Height: number?,
-}
+    Size: UDim2?,
+    Position: UDim2?,
+    AnchorPoint: Vector2?,
 
-export type FillFrame = {
-    Type: "FillFrame",
-
-    BackgroundColor: ThemeColor?,
-    Transparency: number?,
-    
-    Content: {GuidebookContent},
+    ZIndex: number?,
 }
 
 export type Frame = {
     Type: "Frame",
-    Width: number?,
-    Height: number?,
+
+    Size: UDim2?,
+    Position: UDim2?,
+    AnchorPoint: Vector2?,
+    AutomaticSize: Enum.AutomaticSize?,
 
     BackgroundColor: ThemeColor?,
     Transparency: number?,
+
+    ZIndex: number?,
     
     Content: {GuidebookContent},
 }
 
-export type GuidebookContent = Header | RichText | ListLayout | GridAligner | Table | Button | ImageButton | Image | Frame | FillFrame
+export type ScrollingFrame = Frame & {
+    Type: "ScrollingFrame",
+
+    CanvasSize: UDim2?,
+    ScrollBarThickness: number?,
+    AutomaticCanvasSize: Enum.AutomaticSize?
+}
+
+export type GuidebookContent = RichText | ListLayout | GridLayout | Table | Button | ImageButton | Image | Frame | ScrollingFrame | GenericButton
 
 export type GuidebookPage = {
     Title: string,
